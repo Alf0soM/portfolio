@@ -7,11 +7,14 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <button id="theme-toggle">Toggle Dark Mode</button>
+
   <!-- Hero / Header -->
   <header>
+    <img src="me.jpg" alt="Arsenii Fomin" class="profile-pic" />
     <h1>Arsenii Fomin</h1>
     <p>Junior Web Developer</p>
-    <p>I build clean, responsive websites and useful tools with HTML, CSS, JS, and Python.</p>
+    <p>I build clean, responsive websites and useful tools using HTML, CSS, JS, and Python.</p>
   </header>
 
   <!-- About Section -->
@@ -59,7 +62,6 @@
       <li>
         <strong>April 3, 2025:</strong> What I Learned About Freelancing – <em>Starting to apply on Upwork & Fiverr</em>
       </li>
-      <!-- You can add more blog posts here -->
     </ul>
   </section>
 
@@ -73,12 +75,17 @@
     <p>Facebook: <a href="https://www.facebook.com/profile.php?id=61559587756218" target="_blank">Arsenii Fomin</a></p>
   </section>
 
-<script>
-  const toggleBtn = document.getElementById('theme-toggle');
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+  document.addEventListener('mousemove', (e) => {
+    document.body.style.setProperty('--x', `${e.clientX}px`);
+    document.body.style.setProperty('--y', `${e.clientY}px`);
   });
-</script>
 
+    });
+  </script>
 </body>
 </html>
+

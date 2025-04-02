@@ -1,145 +1,202 @@
 /* === Base Reset === */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  /* === Container Sections === */
-  section {
-    max-width: 800px;
-    margin: 0 auto 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  header {
-    text-align: center;
-    margin-bottom: 40px;
-    padding: 10px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+  background-image: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 119, 204, 0.1), transparent 40%);
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+
+/* === Mouse Follow Background Animation === */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 119, 204, 0.1), transparent 60%);
+  z-index: -1;
+  transition: background 0.2s;
+}
+
+/* === Container Sections === */
+section {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+section:hover {
+  transform: translateY(-3px);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 10px;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #111;
+  transition: color 0.3s;
+}
+
+body.dark-mode header h1 {
+  color: #fff;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 5px auto;
+}
+
+.profile-pic {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+}
+
+/* === Typography === */
+section h2 {
+  margin-bottom: 15px;
+  font-size: 1.9rem;
+  color: #111;
+  text-align: center;
+  border-bottom: 2px solid #0077cc;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+body.dark-mode section h2 {
+  color: #fff;
+  border-bottom: 2px solid #4ea8ff;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-size: 1.05rem;
+}
+
+a {
+  text-decoration: none;
+  color: #0077cc;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #005999;
+  text-decoration: underline;
+}
+
+/* === Contact Section === */
+#contact p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+/* === Dark Mode === */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark-mode section {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode a {
+  color: #4ea8ff;
+}
+
+body.dark-mode a:hover {
+  color: #82cfff;
+}
+
+/* === Dark Mode Switcher Button === */
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 1000;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#theme-toggle:hover {
+  background-color: #005999;
+}
+
+body.dark-mode #theme-toggle {
+  background: #4ea8ff;
+  color: #1e1e1e;
+}
+
+/* === Responsive Design === */
+@media screen and (max-width: 768px) {
   header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2.2rem;
   }
-  
+
   header p {
-    font-size: 1.2rem;
-    color: #666;
-    max-width: 600px;
-    margin: 0 auto;
+    font-size: 1rem;
+    padding: 0 10px;
   }
-  
-  /* === Typography === */
-  section h2 {
-    margin-bottom: 10px;
-    color: #111;
+
+  section {
+    margin: 0 10px 30px 10px;
+    padding: 15px;
   }
-  
-  body.dark-mode section h2 {
-    color: #fff;
-  }
-  
-  ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  ul li {
-    margin-bottom: 10px;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #0077cc;
-    transition: 0.2s;
-  }
-  
-  a:hover {
-    color: #005999;
-    text-decoration: underline;
-  }
-  
-  /* === Contact Section === */
-  #contact p {
-    margin-bottom: 8px;
-  }
-  
-  /* === Dark Mode === */
-  body.dark-mode {
-    background-color: #1e1e1e;
-    color: #f0f0f0;
-  }
-  
-  body.dark-mode section {
-    background-color: #2a2a2a;
-  }
-  
-  body.dark-mode a {
-    color: #4ea8ff;
-  }
-  
-  body.dark-mode a:hover {
-    color: #82cfff;
-  }
-  
-  /* === Dark Mode Switcher Button === */
+
   #theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #0077cc;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    z-index: 1000;
+    top: 10px;
+    right: 10px;
+    padding: 6px 10px;
+    font-size: 13px;
   }
-  
-  body.dark-mode #theme-toggle {
-    background: #4ea8ff;
-    color: #1e1e1e;
-  }
-  
-  /* === RESPONSIVE STYLES === */
-  @media screen and (max-width: 768px) {
-    header h1 {
-      font-size: 2rem;
-    }
-  
-    header p {
-      font-size: 1rem;
-      padding: 0 10px;
-    }
-  
-    section {
-      margin: 0 10px 30px 10px;
-      padding: 15px;
-    }
-  
-    #theme-toggle {
-      top: 10px;
-      right: 10px;
-      padding: 6px 10px;
-      font-size: 13px;
-    }
-  }
-  
 
-
-  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+}
